@@ -128,10 +128,19 @@ export default function IndexPage() {
   }, [sorted, activeCategory, searchQuery])
 
   const showHero = activeCategory === 'all' && !searchQuery
-  const heroSlugs = useMemo(() => {
-    if (!showHero) return new Set()
-    return new Set(filtered.slice(0, 4).map((a) => a.slug))
+  const heroArticles = useMemo(() => {
+    if (!showHero) return []
+    const now = new Date()
+    const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000)
+    const recent = filtered.filter((a) => {
+      const d = new Date(a.publication_date + 'T00:00:00')
+      return d >= sevenDaysAgo
+    })
+    return recent.slice(0, 4)
   }, [filtered, showHero])
+  const heroSlugs = useMemo(() => {
+    return new Set(heroArticles.map((a) => a.slug))
+  }, [heroArticles])
 
   const feedArticles = useMemo(() => {
     return filtered.filter((a) => !heroSlugs.has(a.slug))
@@ -180,7 +189,7 @@ export default function IndexPage() {
       </nav>
 
       <main className="main-content">
-        {showHero && <HeroSection articles={filtered} onNavigate={goTo} />}
+        {showHero && heroArticles.length > 0 && <HeroSection articles={heroArticles} onNavigate={goTo} />}
 
         <section className="feed-section">
           <div className="feed-header">
