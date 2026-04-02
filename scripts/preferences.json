@@ -1,0 +1,52 @@
+{
+  "reader": {
+    "role": "Digital ecosystem architect and business aviation operator",
+    "company": "Air Tengri",
+    "location": "Almaty, Kazakhstan",
+    "timezone": "UTC+6",
+    "language": "Russian",
+    "readingTime": "6:30am local, 3 minutes max"
+  },
+  "topics": {
+    "primary": [
+      "Business aviation market trends",
+      "Charter operations and demand shifts",
+      "Aircraft deliveries and fleet changes",
+      "Business aviation regulations (EASA, FAA, CAA)",
+      "CIS region aviation developments",
+      "Middle East and Central Asia aviation routes"
+    ],
+    "secondary": [
+      "Aviation technology and avionics",
+      "Supply chain for aircraft parts and MRO",
+      "Geopolitical impacts on aviation",
+      "Sustainable aviation fuel (SAF)",
+      "FBO and airport infrastructure"
+    ],
+    "tools": [
+      "Embraer", "Bombardier", "Gulfstream", "Dassault",
+      "FlightAware", "WINGX", "AIN Online", "FlightGlobal",
+      "Honeywell", "Rolls-Royce", "GE Aviation"
+    ]
+  },
+  "categories": [
+    "Деловая авиация",
+    "Геополитика и регулирование",
+    "Технологии",
+    "Чартерные перевозки",
+    "Цепочки поставок",
+    "Рынок и экономика"
+  ],
+  "impactLevels": {
+    "high": "Directly affects Air Tengri operations, fleet, or revenue",
+    "medium": "Industry trend worth monitoring, may affect strategy",
+    "low": "Background context, general industry news"
+  },
+  "articleSchema": {
+    "required": ["title", "category", "impact", "summary", "publication_date", "executive_relevance", "overview", "details", "market_impact", "next_steps", "sources"],
+    "optional": ["chart_data", "image_url"],
+    "details": "Array of {header, content} objects. 3-5 subsections per article.",
+    "sources": "Array of {title, url} objects. Real URLs only, never invent.",
+    "chart_data": "{type, title, labels, datasets: [{label, data}]}. Include when data supports visualization."
+  }
+}
