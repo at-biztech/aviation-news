@@ -49,17 +49,61 @@ Run 6 targeted WebSearch queries:
 
 For each result, trace back to the primary source. Prefer: AIN Online, FlightGlobal, WINGX, Reuters, Aviation Week, EASA, FAA over aggregator blogs.
 
-## Step 3: Determine Impact and Select
+## Step 3: Determine the Day's Narrative
 
-For each news item, assess impact to Air Tengri specifically:
+Before scoring or selecting, step back and determine: "What is the story of today for business aviation?"
 
-- **high**: Directly affects operations, fleet decisions, routes, or revenue. Examples: new regulation on CIS airspace, major aircraft order affecting availability, fuel price shift, client market change.
-- **medium**: Industry trend worth monitoring. Examples: new aircraft model announcement, market forecast, competitor move.
-- **low**: Background context. Examples: general industry stats, distant market news, early-stage technology.
+Look at everything you found and identify the theme. Examples:
+- "Charter demand is shifting from Middle East to Europe as conflict reshapes routes"
+- "Manufacturers are delivering more jets but supply chains still can't keep up"
+- "Quiet day, no structural shifts, incremental regulatory updates only"
+
+This narrative will become the hero article's framing and inform which items matter most. If there is no clear narrative, that's fine. Write: "No dominant theme today, mixed signals across segments."
+
+## Step 4: Score and Select with Strict Calibration
+
+For each news item, score its impact to Air Tengri on a 1 to 10 scale:
+
+**Calibration examples (memorize these):**
+- Score 10: A regulation or airspace closure that forces Air Tengri to change routes or ground aircraft. Happens once a quarter at most.
+- Score 9: A direct competitor enters the Kazakhstan charter market, or a major client market (oil/gas, mining) shifts dramatically. A few times per quarter.
+- Score 8: Major aircraft type Air Tengri operates gets an AD (airworthiness directive), or fuel pricing shifts >15%. A few times per month.
+- Score 7: New aircraft model relevant to fleet planning, or significant MRO capacity change in the region. Worth reading this week.
+- Score 6: Industry trend worth knowing (delivery forecasts, market reports). Good context.
+- Score 5 and below: Distant market news, early stage tech, general stats.
+
+**Expected distribution per run:**
+- 0 to 1 items score 8+ (high impact)
+- 2 to 3 items score 6 to 7 (medium impact)
+- 1 to 2 items score 5 or below (low, include only if genuinely interesting)
+
+**Self check:** If you scored 3+ items as 8 or above, you are being too generous. Re-calibrate.
+
+Map scores to impact levels:
+- Score 8+: impact "high"
+- Score 6 to 7: impact "medium"
+- Score 5 and below: impact "low"
+
+### Source Confidence and Tier
+
+For every item, assess:
+
+**confidence:**
+- "verified": Information comes directly from an official source (company press release, regulatory body, official changelog)
+- "high": Reported by 2+ major publications with consistent details
+- "medium": Single major publication, or multiple aggregators
+- "low": Single aggregator, blog, or social media post
+
+**sourceTier:**
+- 1: Official source (EASA, FAA, manufacturer press release, airline announcement)
+- 2: Major aviation publication (AIN Online, FlightGlobal, Aviation Week, Reuters)
+- 3: Aggregator, blog, or secondary source
+
+Rule: An item with sourceTier 3 and confidence "low" cannot be scored above 6, regardless of how important the topic seems.
 
 Select maximum 5 articles per run. Quality over quantity.
 
-## Step 4: Generate Articles
+## Step 5: Generate Articles
 
 For each selected item, generate a full article in Russian with this exact JSON schema:
 
@@ -69,9 +113,12 @@ For each selected item, generate a full article in Russian with this exact JSON 
   "title": "Russian title, concise and specific",
   "category": "One of: Деловая авиация, Геополитика и регулирование, Технологии, Чартерные перевозки, Цепочки поставок, Рынок и экономика",
   "impact": "high | medium | low",
-  "summary": "3-4 sentences with key numbers. What happened and why it matters.",
+  "score": 8,
+  "confidence": "verified | high | medium | low",
+  "sourceTier": 1,
+  "summary": "3-4 sentences with key numbers. First sentence states the SHIFT (what moved), second states the significance for Air Tengri.",
   "publication_date": "YYYY-MM-DD (today or the actual publication date)",
-  "executive_relevance": "3-5 sentences. Specific recommendations for Air Tengri leadership. What to do, not what happened.",
+  "executive_relevance": "3-5 sentences. Specific recommendations for Air Tengri leadership. What to do, not what happened. Starts with a verb.",
   "overview": "2-3 paragraphs with numbers, context, and significance.",
   "details": [
     {"header": "Subsection title", "content": "Detailed paragraph with data"},
@@ -83,30 +130,10 @@ For each selected item, generate a full article in Russian with this exact JSON 
   "sources": [
     {"title": "Source name", "url": "https://real-url-from-search"}
   ],
-  "image_url": "https://images.unsplash.com/photo-XXXXX?w=1200&q=85",
+  "image_url": null,
   "chart_data": null
 }
 ```
-
-### Finding Images
-
-For each article, search Unsplash for a relevant image:
-```
-WebSearch: "site:unsplash.com [english keywords for article topic]"
-```
-
-Use the direct Unsplash photo URL with `?w=1200&q=85` parameters. Example:
-`https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1200&q=85`
-
-If you cannot find a relevant image, use one of these fallback URLs based on category:
-- Деловая авиация: `https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1200&q=85`
-- Геополитика и регулирование: `https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=1200&q=85`
-- Технологии: `https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&q=85`
-- Чартерные перевозки: `https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=1200&q=85`
-- Цепочки поставок: `https://images.unsplash.com/photo-1565338088924-51340ecd5765?w=1200&q=85`
-- Рынок и экономика: `https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=1200&q=85`
-
-Do not leave image_url as null. Every article must have an image.
 
 Include chart_data when the article has numerical data that benefits from visualization:
 ```json
@@ -118,7 +145,7 @@ Include chart_data when the article has numerical data that benefits from visual
 }
 ```
 
-## Step 5: Deduplicate
+## Step 6: Deduplicate
 
 Read the current articles.json:
 ```bash
@@ -127,7 +154,7 @@ node -e "const d=JSON.parse(require('fs').readFileSync('public/articles.json','u
 
 Remove any new article whose title covers the same news as an existing article, unless there is a significant new development.
 
-## Step 6: Write and Validate
+## Step 7: Write and Validate
 
 Write the new articles to scripts/new-articles.json:
 ```bash
@@ -141,7 +168,7 @@ Run validation:
 node scripts/validate-articles.mjs
 ```
 
-## Step 7: Merge and Push
+## Step 8: Merge and Push
 
 Merge new articles into articles.json:
 ```bash
@@ -168,12 +195,13 @@ git push origin main
 
 Replace {YOUR_PAT} with your actual GitHub Personal Access Token.
 
-## Step 8: Update Agent Notes
+## Step 9: Update Agent Notes
 
 Update scripts/agent-notes.json with:
-- Which sources worked or failed
+- Which sources worked or failed (URLs, status codes)
 - Search tips for next run
 - Quality observations
+- Today's narrative theme
 
 ```bash
 git add scripts/agent-notes.json
@@ -187,11 +215,12 @@ git push origin main
 - Maximum 5 articles per run
 - Never invent URLs. Every source URL must come from your actual search results.
 - One category per article (never compound)
-- Zero high-impact items on a quiet day is correct
+- Zero high impact items on a quiet day is correct
 - executive_relevance must contain specific, actionable recommendations for Air Tengri
-- summary states the shift and significance, not just the facts
+- summary first sentence states the SHIFT, second states what it means
 - If you find fewer than 2 genuinely newsworthy items, create fewer articles. Do not pad.
-- Do not include articles about general AI, crypto, or non-aviation topics
+- Do not include articles about general AI, crypto, or non aviation topics
 - No emojis anywhere
-- NEVER use hyphens (-), en dashes (–), em dashes (—), or underscores (_) in any text field. Use commas or spaces instead. For compound words like "бизнес-джет" write "бизнесджет". For separators like " — " use ", ".
-- Images must be HD quality (w=1200&q=85 parameters), relevant to the specific article topic, no text overlays or objects blocking the photo. Search Unsplash with specific English keywords matching the article subject.
+- NEVER use hyphens, en dashes, em dashes, or underscores in any text field. Use commas or spaces instead. For compound words like "бизнесджет" write without hyphen. For separators use ", " not " — ".
+- image_url is always null. Do not search for images.
+- An item with sourceTier 3 and confidence "low" cannot have impact "high"
