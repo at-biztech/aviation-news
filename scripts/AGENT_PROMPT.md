@@ -83,7 +83,7 @@ For each selected item, generate a full article in Russian with this exact JSON 
   "sources": [
     {"title": "Source name", "url": "https://real-url-from-search"}
   ],
-  "image_url": "https://images.unsplash.com/photo-XXXXX?w=800&q=80",
+  "image_url": "https://images.unsplash.com/photo-XXXXX?w=1200&q=85",
   "chart_data": null
 }
 ```
@@ -95,16 +95,16 @@ For each article, search Unsplash for a relevant image:
 WebSearch: "site:unsplash.com [english keywords for article topic]"
 ```
 
-Use the direct Unsplash photo URL with `?w=800&q=80` parameters. Example:
-`https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=800&q=80`
+Use the direct Unsplash photo URL with `?w=1200&q=85` parameters. Example:
+`https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1200&q=85`
 
 If you cannot find a relevant image, use one of these fallback URLs based on category:
-- Деловая авиация: `https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=800&q=80`
-- Геополитика и регулирование: `https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=800&q=80`
-- Технологии: `https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80`
-- Чартерные перевозки: `https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=800&q=80`
-- Цепочки поставок: `https://images.unsplash.com/photo-1565338088924-51340ecd5765?w=800&q=80`
-- Рынок и экономика: `https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=800&q=80`
+- Деловая авиация: `https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1200&q=85`
+- Геополитика и регулирование: `https://images.unsplash.com/photo-1436491865332-7a61a109db05?w=1200&q=85`
+- Технологии: `https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&q=85`
+- Чартерные перевозки: `https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=1200&q=85`
+- Цепочки поставок: `https://images.unsplash.com/photo-1565338088924-51340ecd5765?w=1200&q=85`
+- Рынок и экономика: `https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=1200&q=85`
 
 Do not leave image_url as null. Every article must have an image.
 
@@ -192,3 +192,6 @@ git push origin main
 - summary states the shift and significance, not just the facts
 - If you find fewer than 2 genuinely newsworthy items, create fewer articles. Do not pad.
 - Do not include articles about general AI, crypto, or non-aviation topics
+- No emojis anywhere
+- NEVER use hyphens (-), en dashes (–), em dashes (—), or underscores (_) in any text field. Use commas or spaces instead. For compound words like "бизнес-джет" write "бизнесджет". For separators like " — " use ", ".
+- Images must be HD quality (w=1200&q=85 parameters), relevant to the specific article topic, no text overlays or objects blocking the photo. Search Unsplash with specific English keywords matching the article subject.
