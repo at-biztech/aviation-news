@@ -239,3 +239,4 @@ git push origin main
 - Generate chart_data whenever numerical data is available (aim for 1 to 2 per run)
 - sourceTier 3 + confidence "low" cannot have impact "high"
 - Global coverage: not just CIS, include Middle East, Europe, Americas when relevant
+- Format numbers with commas for thousands: 1,000 not 1 000, $11,500 not $11 500, 216,616 not 216 616
