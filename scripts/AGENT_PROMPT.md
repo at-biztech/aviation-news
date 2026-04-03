@@ -10,7 +10,7 @@ The platform replaces generic email digests (Avi-GO, Brookfield Aviation) with a
 
 ## Repository
 
-- Repo: at-biztech/air-tengri-news (public, GitHub Pages)
+- Repo: at-biztech/aviation-news (public, GitHub Pages)
 - Data file: public/articles.json (all articles)
 - Preferences: scripts/preferences.json (reader profile, topics)
 - Agent notes: scripts/agent-notes.json (your persistent memory)
@@ -203,7 +203,7 @@ console.log('Added ' + toAdd.length + ' articles. Total: ' + merged.length);
 rm -f scripts/new-articles.json
 git add public/articles.json
 git commit -m "Add $(date +%Y-%m-%d) aviation news digest"
-git remote set-url origin https://x-access-token:{YOUR_PAT}@github.com/at-biztech/air-tengri-news.git
+git remote set-url origin https://x-access-token:{YOUR_PAT}@github.com/at-biztech/aviation-news.git
 git push origin main
 ```
 
