@@ -54,7 +54,13 @@ export function enrichArticle(a) {
   }
 }
 
-export function sortArticles(articles) {
+// Sort by date (newest first), used for feed
+export function sortByDate(articles) {
+  return [...articles].sort((a, b) => b.publication_date.localeCompare(a.publication_date))
+}
+
+// Sort by impact then date, used for hero selection
+export function sortByImpact(articles) {
   return [...articles].sort((a, b) => {
     const wA = IMPACT_WEIGHT[a.impact] || 0
     const wB = IMPACT_WEIGHT[b.impact] || 0

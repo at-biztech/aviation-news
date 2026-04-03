@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="dark">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -13,7 +13,12 @@
     <script>
       (function() {
         var t = localStorage.getItem('air-tengri-theme');
-        if (t) document.documentElement.setAttribute('data-theme', t);
+        if (t) {
+          document.documentElement.setAttribute('data-theme', t);
+        } else {
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+        }
       })();
     </script>
   </head>

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { loadArticles, sortArticles } from '../data'
+import { loadArticles, sortByDate } from '../data'
 
 function ChartRenderer({ chartData }) {
   const canvasRef = useRef(null)
@@ -128,7 +128,7 @@ export default function ArticlePage() {
     )
   }
 
-  const sorted = sortArticles(articles)
+  const sorted = sortByDate(articles)
   const idx = sorted.findIndex((a) => a.slug === article.slug)
   const prevArticle = idx > 0 ? sorted[idx - 1] : null
   const nextArticle = idx < sorted.length - 1 ? sorted[idx + 1] : null

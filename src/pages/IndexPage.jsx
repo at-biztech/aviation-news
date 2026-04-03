@@ -2,14 +2,14 @@ import { useState, useEffect, useMemo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-import { loadArticles, sortArticles, CATEGORIES, sourcesWord, articlesWord } from '../data'
+import { loadArticles, sortByDate, sortByImpact, CATEGORIES, sourcesWord, articlesWord } from '../data'
 
-function ImgWithFallback({ src, alt, className, loading }) {
+function HeroImage({ src }) {
   const [error, setError] = useState(false)
   if (!src || error) return null
   return (
-    <div className={className === 'hero-image' ? 'hero-image-wrap' : 'card-thumbnail-wrap'}>
-      <img src={src} alt={alt} className={className} loading={loading} onError={() => setError(true)} />
+    <div className="hero-image-wrap">
+      <img src={src} alt="" className="hero-image" loading="eager" onError={() => setError(true)} />
     </div>
   )
 }
@@ -24,7 +24,7 @@ function HeroSection({ articles, onNavigate }) {
     <section className="hero-section">
       <div className="hero-grid">
         <article className="hero-main" onClick={() => onNavigate(hero.slug)}>
-          <ImgWithFallback src={hero.image_url} className="hero-image" loading="eager" />
+          <HeroImage src={hero.image_url} />
           <div className="hero-text">
             <div className="hero-meta">
               <span className="category-tag" style={{ '--tag-color': cm.color }}>{cm.label}</span>
@@ -39,19 +39,21 @@ function HeroSection({ articles, onNavigate }) {
             </div>
           </div>
         </article>
-        <aside className="hero-sidebar">
-          <div className="sidebar-label">Также важно</div>
-          {sidebar.map((a) => (
-            <article key={a.slug} className="sidebar-card" onClick={() => onNavigate(a.slug)}>
-              <div className="sidebar-card-meta">
-                <span className="category-dot" style={{ background: a.category_meta.color }}></span>
-                <span className="sidebar-category">{a.category_meta.label}</span>
-                <span className="sidebar-date">{a.short_date}</span>
-              </div>
-              <h3 className="sidebar-title">{a.title}</h3>
-            </article>
-          ))}
-        </aside>
+        {sidebar.length > 0 && (
+          <aside className="hero-sidebar">
+            <div className="sidebar-label">Также важно</div>
+            {sidebar.map((a) => (
+              <article key={a.slug} className="sidebar-card" onClick={() => onNavigate(a.slug)}>
+                <div className="sidebar-card-meta">
+                  <span className="category-dot" style={{ background: a.category_meta.color }}></span>
+                  <span className="sidebar-category">{a.category_meta.label}</span>
+                  <span className="sidebar-date">{a.short_date}</span>
+                </div>
+                <h3 className="sidebar-title">{a.title}</h3>
+              </article>
+            ))}
+          </aside>
+        )}
       </div>
     </section>
   )
@@ -61,7 +63,6 @@ function NewsCard({ article, onNavigate }) {
   const cm = article.category_meta
   return (
     <article className="news-card" onClick={() => onNavigate(article.slug)}>
-      <ImgWithFallback src={article.image_url} className="card-thumbnail" loading="lazy" />
       <div className="card-top">
         <div className="card-meta">
           <span className="category-tag category-tag--sm" style={{ '--tag-color': cm.color }}>{cm.label}</span>
@@ -110,7 +111,8 @@ export default function IndexPage() {
     return counts
   }, [articles])
 
-  const sorted = useMemo(() => sortArticles(articles), [articles])
+  // Feed: sorted by date (newest first)
+  const sorted = useMemo(() => sortByDate(articles), [articles])
 
   const filtered = useMemo(() => {
     const q = searchQuery.toLowerCase().trim()
@@ -127,17 +129,25 @@ export default function IndexPage() {
     })
   }, [sorted, activeCategory, searchQuery])
 
+  // Hero: most impactful from last 7 days, fallback to most impactful overall
   const showHero = activeCategory === 'all' && !searchQuery
   const heroArticles = useMemo(() => {
-    if (!showHero) return []
+    if (!showHero || filtered.length === 0) return []
+
     const now = new Date()
     const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000)
-    const recent = filtered.filter((a) => {
-      const d = new Date(a.publication_date + 'T00:00:00')
-      return d >= sevenDaysAgo
-    })
-    return recent.slice(0, 4)
+
+    // Try last 7 days first, sorted by impact
+    const recent = sortByImpact(
+      filtered.filter((a) => new Date(a.publication_date + 'T00:00:00') >= sevenDaysAgo)
+    )
+
+    if (recent.length > 0) return recent.slice(0, 4)
+
+    // Fallback: most impactful overall
+    return sortByImpact(filtered).slice(0, 4)
   }, [filtered, showHero])
+
   const heroSlugs = useMemo(() => {
     return new Set(heroArticles.map((a) => a.slug))
   }, [heroArticles])
