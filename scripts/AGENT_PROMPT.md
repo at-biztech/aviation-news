@@ -40,7 +40,7 @@ If any return 403 or fail, note it in agent-notes.json and proceed to Step 2.
 
 ## Step 2: Broader Web Search
 
-Run 8 targeted WebSearch queries (global coverage):
+Run 7 targeted WebSearch queries (global coverage):
 
 1. "business aviation news this week" (global market)
 2. "charter aviation demand 2026" (charter operations)
@@ -48,8 +48,7 @@ Run 8 targeted WebSearch queries (global coverage):
 4. "aviation regulation EASA FAA 2026" (regulatory)
 5. "business aviation Kazakhstan Central Asia CIS" (regional)
 6. "aviation supply chain MRO parts 2026" (supply chain)
-7. "business aviation Middle East Dubai UAE" (key market)
-8. "business aviation market data statistics 2026" (for charts)
+7. "business aviation market data statistics 2026" (for charts)
 
 For each result, trace back to the primary source. Prefer: AIN Online, FlightGlobal, WINGX, Reuters, Aviation Week, EASA, FAA over aggregator blogs.
 
