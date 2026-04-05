@@ -4,12 +4,22 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { loadArticles, sortByDate, sortByImpact, CATEGORIES, sourcesWord, articlesWord } from '../data'
 
-function HeroImage({ src }) {
+const HERO_FALLBACK_IMAGES = {
+  'Деловая авиация': 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1600&q=90',
+  'Геополитика и регулирование': 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1600&q=90',
+  'Технологии': 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600&q=90',
+  'Чартерные перевозки': 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=1600&q=90',
+  'Цепочки поставок': 'https://images.unsplash.com/photo-1562920618-5266ab1e7033?w=1600&q=90',
+  'Рынок и экономика': 'https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=1600&q=90',
+}
+const DEFAULT_HERO_IMAGE = 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1600&q=90'
+
+function HeroImage({ src, category }) {
   const [error, setError] = useState(false)
-  if (!src || error) return null
+  const imgUrl = (!src || error) ? (HERO_FALLBACK_IMAGES[category] || DEFAULT_HERO_IMAGE) : src
   return (
     <div className="hero-image-wrap">
-      <img src={src} alt="" className="hero-image" loading="eager" onError={() => setError(true)} />
+      <img src={imgUrl} alt="" className="hero-image" loading="eager" onError={() => setError(true)} />
     </div>
   )
 }
@@ -24,7 +34,7 @@ function HeroSection({ articles, onNavigate }) {
     <section className="hero-section">
       <div className="hero-grid">
         <article className="hero-main" onClick={() => onNavigate(hero.slug)}>
-          <HeroImage src={hero.image_url} />
+          <HeroImage src={hero.image_url} category={hero.category} />
           <div className="hero-text">
             <div className="hero-meta">
               <span className="category-tag" style={{ '--tag-color': cm.color }}>{cm.label}</span>
@@ -129,7 +139,7 @@ export default function IndexPage() {
     })
   }, [sorted, activeCategory, searchQuery])
 
-  // Hero: most impactful from last 7 days, fallback to most impactful overall
+  // Hero: most impactful from last 7 days, fill remaining from most impactful overall
   const showHero = activeCategory === 'all' && !searchQuery
   const heroArticles = useMemo(() => {
     if (!showHero || filtered.length === 0) return []
@@ -137,15 +147,19 @@ export default function IndexPage() {
     const now = new Date()
     const sevenDaysAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000)
 
-    // Try last 7 days first, sorted by impact
+    // Start with last 7 days, sorted by impact
     const recent = sortByImpact(
       filtered.filter((a) => new Date(a.publication_date + 'T00:00:00') >= sevenDaysAgo)
     )
 
-    if (recent.length > 0) return recent.slice(0, 4)
+    // If we have 4+, use them
+    if (recent.length >= 4) return recent.slice(0, 4)
 
-    // Fallback: most impactful overall
-    return sortByImpact(filtered).slice(0, 4)
+    // Fill remaining slots from most impactful overall (avoiding duplicates)
+    const recentSlugs = new Set(recent.map((a) => a.slug))
+    const fallback = sortByImpact(filtered).filter((a) => !recentSlugs.has(a.slug))
+    const combined = [...recent, ...fallback]
+    return combined.slice(0, 4)
   }, [filtered, showHero])
 
   const heroSlugs = useMemo(() => {
