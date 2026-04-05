@@ -9,17 +9,24 @@ const HERO_FALLBACK_IMAGES = {
   'Геополитика и регулирование': 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1600&q=90',
   'Технологии': 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600&q=90',
   'Чартерные перевозки': 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=1600&q=90',
-  'Цепочки поставок': 'https://images.unsplash.com/photo-1562920618-5266ab1e7033?w=1600&q=90',
+  'Цепочки поставок': 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1600&q=90',
   'Рынок и экономика': 'https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=1600&q=90',
 }
 const DEFAULT_HERO_IMAGE = 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1600&q=90'
 
 function HeroImage({ src, category }) {
-  const [error, setError] = useState(false)
-  const imgUrl = (!src || error) ? (HERO_FALLBACK_IMAGES[category] || DEFAULT_HERO_IMAGE) : src
+  const [tryCount, setTryCount] = useState(0)
+  const fallback = HERO_FALLBACK_IMAGES[category] || DEFAULT_HERO_IMAGE
+  const imgUrl = tryCount === 0 ? (src || fallback) : tryCount === 1 ? fallback : DEFAULT_HERO_IMAGE
   return (
     <div className="hero-image-wrap">
-      <img src={imgUrl} alt="" className="hero-image" loading="eager" onError={() => setError(true)} />
+      <img
+        src={imgUrl}
+        alt=""
+        className="hero-image"
+        loading="eager"
+        onError={() => { if (tryCount < 2) setTryCount(tryCount + 1) }}
+      />
     </div>
   )
 }
