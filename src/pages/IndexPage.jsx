@@ -6,11 +6,11 @@ import { loadArticles, sortByDate, sortByImpact, CATEGORIES, sourcesWord, articl
 
 const HERO_FALLBACK_IMAGES = {
   'Деловая авиация': 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1600&q=90',
-  'Геополитика и регулирование': 'https://images.unsplash.com/photo-1569154941061-e231b4725ef1?w=1600&q=90',
-  'Технологии': 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600&q=90',
-  'Чартерные перевозки': 'https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=1600&q=90',
-  'Цепочки поставок': 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=1600&q=90',
-  'Рынок и экономика': 'https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=1600&q=90',
+  'Геополитика и регулирование': 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1600&q=90',
+  'Технологии': 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1600&q=90',
+  'Чартерные перевозки': 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1600&q=90',
+  'Цепочки поставок': 'https://images.unsplash.com/photo-1542296332-2e4473faf563?w=1600&q=90',
+  'Рынок и экономика': 'https://images.unsplash.com/photo-1542296332-2e4473faf563?w=1600&q=90',
 }
 const DEFAULT_HERO_IMAGE = 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1600&q=90'
 
