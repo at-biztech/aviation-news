@@ -125,21 +125,9 @@ For each selected item, generate a full article in Russian:
 }
 ```
 
-### Hero Image
+### Images
 
-The MOST impactful article of the day (highest score) must have a hero image. Search Unsplash:
-```
-WebSearch: "site:unsplash.com [specific english keywords matching article subject]"
-```
-
-Use the direct photo URL with `?w=1600&q=90` for maximum quality. The image must be:
-- Directly relevant to the specific article topic (not generic aviation)
-- Super HD, no watermarks, no text overlays, no stock feel
-- Unique (not the same image used before, check agent-notes.json for previously used photo IDs)
-
-Set image_url ONLY on the highest-scored article. All other articles: image_url = null.
-
-After using an image, note the photo ID in agent-notes.json under "usedImages" to avoid repeats.
+Set image_url to null on ALL articles. Do NOT search for images. Do NOT use WebFetch on any image URLs. The frontend handles hero images automatically.
 
 ### Charts
 
@@ -205,7 +193,6 @@ Update scripts/agent-notes.json with:
 - Search tips for next run
 - Quality observations
 - Today's narrative theme
-- Used image photo IDs (to avoid repeats)
 
 ```bash
 git add scripts/agent-notes.json
@@ -224,7 +211,7 @@ git push origin main
 - executive_relevance must contain specific, actionable recommendations
 - summary first sentence states the SHIFT, second states what it means
 - Do not include articles about general AI, crypto, or non-aviation topics
-- Only the highest scored article gets image_url (hero image). All others: null.
+- image_url is always null. Do not search for images.
 - Generate chart_data whenever numerical data is available (aim for 1 to 2 per run)
 - sourceTier 3 + confidence "low" cannot have impact "high"
 - Global coverage: not just CIS, include Middle East, Europe, Americas when relevant
