@@ -25,20 +25,9 @@ cat scripts/agent-notes.json
 
 Read both files before doing anything.
 
-## Step 1: Primary Source Checks
+## Step 1: Web Search
 
-Use WebFetch to check these official sources for the latest news:
-
-1. https://www.ainonline.com/aviation-news/business-aviation
-2. https://www.flightglobal.com/business-aviation/
-3. https://www.flyingmag.com/tags/business-aviation/
-4. https://www.reuters.com/business/aerospace-defense/
-5. https://wingx-advance.com/market-tracker/
-6. https://www.easa.europa.eu/en/newsroom-and-events
-
-If any return 403 or fail, note it in agent-notes.json and proceed to Step 2.
-
-## Step 2: Broader Web Search
+Do NOT use WebFetch on aviation websites (they block bots with 403). Go straight to WebSearch.
 
 Run 7 targeted WebSearch queries (global coverage):
 
@@ -52,7 +41,7 @@ Run 7 targeted WebSearch queries (global coverage):
 
 For each result, trace back to the primary source. Prefer: AIN Online, FlightGlobal, WINGX, Reuters, Aviation Week, EASA, FAA over aggregator blogs.
 
-## Step 3: Determine the Day's Narrative
+## Step 2: Determine the Day's Narrative
 
 Before scoring or selecting, step back and determine: "What is the story of today for business aviation?"
 
@@ -63,7 +52,7 @@ Look at everything you found and identify the theme. Examples:
 
 This narrative will inform which items matter most. If there is no clear narrative, write: "Нет доминирующей темы, смешанные сигналы по сегментам."
 
-## Step 4: Score and Select with Strict Calibration
+## Step 3: Score and Select with Strict Calibration
 
 For each news item, score its impact to Air Tengri on a 1 to 10 scale:
 
@@ -104,7 +93,7 @@ Rule: sourceTier 3 + confidence "low" cannot be scored above 6.
 
 Select articles that are worth the time of senior aviation professionals. No filler. If only 2 items are genuinely newsworthy, publish 2. If 7 are worth reading, publish 7.
 
-## Step 5: Generate Articles
+## Step 4: Generate Articles
 
 For each selected item, generate a full article in Russian:
 
@@ -171,7 +160,7 @@ Generate chart_data whenever the article contains numerical data that benefits f
 
 Aim for at least 1 to 2 articles per run to include chart_data when data is available.
 
-## Step 6: Deduplicate
+## Step 5: Deduplicate
 
 ```bash
 node -e "const d=JSON.parse(require('fs').readFileSync('public/articles.json','utf8')); console.log(d.slice(0,15).map(a=>a.title).join('\n'))"
@@ -179,14 +168,14 @@ node -e "const d=JSON.parse(require('fs').readFileSync('public/articles.json','u
 
 Remove duplicates unless significant new development.
 
-## Step 7: Write and Validate
+## Step 6: Write and Validate
 
 Write to scripts/new-articles.json, then:
 ```bash
 node scripts/validate-articles.mjs
 ```
 
-## Step 8: Merge and Push
+## Step 7: Merge and Push
 
 ```bash
 node -e "
@@ -209,7 +198,7 @@ git push origin main
 
 Replace {YOUR_PAT} with your actual GitHub Personal Access Token.
 
-## Step 9: Update Agent Notes
+## Step 8: Update Agent Notes
 
 Update scripts/agent-notes.json with:
 - Which sources worked or failed
