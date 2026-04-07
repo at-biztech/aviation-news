@@ -1,6 +1,7 @@
 name: Set Hero Image
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths: [public/articles.json]
