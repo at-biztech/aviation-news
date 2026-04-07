@@ -1,12 +1,29 @@
 {
-  "lastRun": null,
-  "sourceIssues": [],
+  "lastRun": "2026-04-07",
+  "sourceIssues": [
+    "WebFetch returns 403 on all URLs, do not attempt",
+    "Remote was ahead on push — always fetch and rebase before pushing"
+  ],
   "searchTips": [
     "Search for 'business aviation' not 'private jets' for better results",
     "Include 'charter' in searches for operational news",
     "AIN Online, FlightGlobal, and WINGX are the best primary sources",
-    "Russian aviation sources: ato.ru, aviaport.ru, aex.ru"
+    "Russian aviation sources: ato.ru, aviaport.ru, aex.ru",
+    "Always read ALL existing slugs before writing — 39+ articles already cover many topics",
+    "UK APD, MRO Central Asia, Kazakhstan routes, supply chain crisis already covered as of 2026-04-07",
+    "Check existing slugs with: node -e \"const d=JSON.parse(require('fs').readFileSync('public/articles.json','utf8')); console.log(d.map(a=>a.slug).join('\\n'))\""
   ],
-  "qualityNotes": [],
-  "improvementNotes": []
+  "qualityNotes": [
+    "Run 4 searches in parallel using 2 agents (2 searches each) to save time",
+    "Run agent searches before reading existing articles to parallelize",
+    "GlobeNewsWire, Astana Times, Aviation Week are reliable sources with real URLs",
+    "AIFC (Astana International Financial Centre) is a good source for Kazakhstan aviation finance news",
+    "privatejetcardcomparisons.com publishes weekly flight activity data (Week N format)"
+  ],
+  "improvementNotes": [
+    "With 39+ articles, most obvious topics are covered — look for niche angles: finance/leasing, digital MRO, workforce",
+    "Engine MRO market size data ($47B 2026) is distinct from supply chain crisis articles",
+    "AIFC aviation finance angle is uncovered and relevant for Air Tengri fleet planning",
+    "Avoid repeating: fuel prices, UK APD, Dassault Falcon 10X, SCAT MAX 8, Kazakhstan routes (all covered)"
+  ]
 }
