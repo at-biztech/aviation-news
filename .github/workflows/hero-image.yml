@@ -33,4 +33,5 @@ jobs:
           git diff --quiet public/articles.json && exit 0
           git add public/articles.json
           git commit -m "Set hero image for $(date +%Y-%m-%d)"
+          git pull --rebase origin main
           git push
