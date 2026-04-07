@@ -3,7 +3,8 @@
  * Finds the hero article (most impactful from last 7 days)
  * and sets its image_url by searching Unsplash based on title + summary.
  */
-const fs = require('fs')
+import { readFileSync, writeFileSync } from 'fs'
+const fs = { readFileSync, writeFileSync }
 
 const UNSPLASH_KEY = process.env.UNSPLASH_ACCESS_KEY
 if (!UNSPLASH_KEY) {
