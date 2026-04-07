@@ -41,7 +41,7 @@
         "url": "https://foreignpolicy.com/2026/04/03/jet-fuel-prices-energy-crisis-iran-war-oil-trump/"
       }
     ],
-    "image_url": null,
+    "image_url": "https://images.unsplash.com/photo-1724509318694-e19372827c7c?ixid=M3w5MTc4OTB8MHwxfHNlYXJjaHwzfHxhdmlhdGlvbiUyMG1hcmtldCUyMGJ1c2luZXNzJTIwamV0JTIwZmxlZXQlMjB0YXJtYWN8ZW58MHwwfHx8MTc3NTU1MTAzN3ww&ixlib=rb-4.1.0&w=1600&q=90&fit=crop&crop=center",
     "chart_data": {
       "type": "line",
       "title": "Цена авиатоплива в США ($/галлон)",
@@ -552,7 +552,7 @@
         "url": "https://smart-aviation.co.uk/changes-to-air-passenger-duty-apd-for-private-jets/"
       }
     ],
-    "image_url": "https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=1600&q=90",
+    "image_url": null,
     "chart_data": null
   },
   {
