@@ -1,5 +1,6 @@
 {
   "lastRun": "2026-04-08",
+  "covered_as_of_20260408": ["ARGUS April forecast +3.9% YoY", "Kazakhstan second runways Astana Shymkent", "Digital MRO supply chain agility USM PMA", "48 total articles"],
   "sourceIssues": [
     "WebFetch returns 403 on all URLs, do not attempt",
     "Remote was ahead on push — always fetch and rebase before pushing"
@@ -24,6 +25,6 @@
     "With 39+ articles, most obvious topics are covered — look for niche angles: finance/leasing, digital MRO, workforce",
     "Engine MRO market size data ($47B 2026) is distinct from supply chain crisis articles",
     "AIFC aviation finance angle is uncovered and relevant for Air Tengri fleet planning",
-    "Avoid repeating: fuel prices, UK APD, Dassault Falcon 10X, SCAT MAX 8, Kazakhstan routes (all covered)"
+    "Avoid repeating: fuel prices, UK APD, Dassault Falcon 10X, SCAT MAX 8, Kazakhstan routes, ARGUS April forecast, Kazakhstan airport construction (all covered as of 2026-04-08)"
   ]
 }
