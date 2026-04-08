@@ -1,5 +1,5 @@
 {
-  "lastRun": "2026-04-07",
+  "lastRun": "2026-04-08",
   "sourceIssues": [
     "WebFetch returns 403 on all URLs, do not attempt",
     "Remote was ahead on push — always fetch and rebase before pushing"
