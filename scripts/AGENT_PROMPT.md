@@ -83,6 +83,7 @@ git push origin main
 
 - Russian text only. No emojis. No hyphens/dashes/underscores in text.
 - Numbers with commas: 1,000 not 1 000.
+- Number ranges use "до": "5 до 15%" not "5 15%", "$8,000 до 10,000" not "$8,000 10,000".
 - image_url always null.
 - One category per article: Деловая авиация, Геополитика и регулирование, Технологии, Чартерные перевозки, Цепочки поставок, Рынок и экономика.
 - WRITE FAST. Do not deliberate. Do not do extra searches. 4 searches then write.
