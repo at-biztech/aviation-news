@@ -1,5 +1,5 @@
 {
-  "lastRun": "2026-04-10",
+  "lastRun": "2026-04-11",
   "covered_as_of_20260408": [
     "ARGUS April forecast +3.9% YoY",
     "Kazakhstan second runways Astana Shymkent",
@@ -32,7 +32,8 @@
     "AIFC aviation finance angle is uncovered and relevant for Air Tengri fleet planning",
     "Avoid repeating: fuel prices, UK APD, Dassault Falcon 10X, SCAT MAX 8, Kazakhstan routes, ARGUS April forecast, Kazakhstan airport construction (all covered as of 2026-04-08)",
     "Avoid repeating: Central Asia Aviation Summit, US tariffs MRO supply chain, TSA staffing bizav demand (all covered 2026-04-09)",
-    "Avoid repeating: EBACE Geneva cancellation, Kazakhstan-US nonstop flights Boeing 787, MRO aftermarket consolidation investors (all covered 2026-04-10)"
+    "Avoid repeating: EBACE Geneva cancellation, Kazakhstan-US nonstop flights Boeing 787, MRO aftermarket consolidation investors (all covered 2026-04-10)",
+    "Avoid repeating: Middle East Strait of Hormuz bizav demand fuel prices April 2026, commercial MRO market $139B capacity stretch, US business jets HNWI demand SAF fleet modernization 2026-2034 (all covered 2026-04-11)"
   ],
   "covered_as_of_20260409": [
     "Central Asia Aviation Summit Astana April 23 2026",
@@ -45,5 +46,11 @@
     "Kazakhstan US nonstop flights first ever Boeing 787 Dreamliner",
     "MRO aftermarket consolidation investors 2026 Oliver Wyman $3.1B extra costs",
     "54 total articles"
+  ],
+  "covered_as_of_20260411": [
+    "Middle East Strait of Hormuz bizav demand WingX Week 13 80921 departures +11% YoY fuel $8.63/gallon",
+    "Commercial MRO market $139B industry at full capacity stretch engine spending 53%",
+    "US business jets market HNWI demand SAF fleet modernization $26.59B 2026 to $72.27B 2034",
+    "57 total articles"
   ]
 }
