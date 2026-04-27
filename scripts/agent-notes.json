@@ -1,5 +1,5 @@
 {
-  "lastRun": "2026-04-26",
+  "lastRun": "2026-04-27",
   "covered_as_of_20260408": [
     "ARGUS April forecast +3.9% YoY",
     "Kazakhstan second runways Astana Shymkent",
@@ -43,7 +43,8 @@
     "Avoid repeating: Gulfstream G700 Qatar Executive 10th delivery April 2026, FlyArystan Kazakhstan 71% seat capacity growth 2025, charter fuel costs rising $8.63/gallon CNBC April 2026 (all covered 2026-04-19)",
     "Avoid repeating: Textron Cessna Citation Latitude Luminair 9-aircraft fleet order Aero Friedrichshafen Starlink Citation Ascend FAA EASA, Airbus Kazakhstan strategic market aviation defense partnership, CADA/26 Almaty 200 specialists digital aviation NDC AI airport digitalization (all covered 2026-04-23)",
     "Avoid repeating: Boeing Q1 2026 results $22.2B revenue +14% YoY manufacturing recovery delivery deficit, Air Astana Q1 2026 international transit +65% YoY new routes Guangzhou Larnaca Dalaman hub strategy, Vertical Aerospace VX4 piloted transition flight eVTOL certification milestone 2028-2030 (all covered 2026-04-24)",
-    "Avoid repeating: Gogo 5G Citation connectivity upgrade, MRO Americas 2026 $97B market conference, Singapore Changi VIP terminal redevelopment Asia Pacific hub (all covered 2026-04-26)"
+    "Avoid repeating: Gogo 5G Citation connectivity upgrade, MRO Americas 2026 $97B market conference, Singapore Changi VIP terminal redevelopment Asia Pacific hub (all covered 2026-04-26)",
+    "Avoid repeating: Embraer FAA ANAC emergency AD PTA failure, Textron Aviation European parts distribution center Citation, China Kazakhstan flights +120% pre-COVID Air Astana Hangzhou (all covered 2026-04-27)"
   ],
   "covered_as_of_20260409": [
     "Central Asia Aviation Summit Astana April 23 2026",
@@ -116,5 +117,11 @@
     "MRO Americas 2026 conference aftermarket market $97B supply chain pressure",
     "Singapore Changi VIP terminal redevelopment business aviation hub Asia Pacific",
     "86 total articles"
+  ],
+  "covered_as_of_20260427": [
+    "Embraer FAA ANAC emergency AD Pitch Trim Actuator failure business jets",
+    "Textron Aviation European Parts Distribution Center expansion Citation supply chain",
+    "China Kazakhstan Central Asia flights +120% pre-COVID levels Air Astana Hangzhou",
+    "89 total articles"
   ]
 }
