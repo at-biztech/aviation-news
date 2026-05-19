@@ -1,19 +1,18 @@
 {
-  "lastRun": "2026-05-18",
+  "lastRun": "2026-05-19",
   "covered_as_of_20260518": [
     "Bombardier accelerated A&P maintenance technician training program FAA certification workforce shortage",
     "EU RefuelEU SAF mandate 2% from 2025 charter operators cost impact 6% by 2030 20% by 2035",
     "IATA USM PMA parts access initiative $3.1B extra MRO costs 2025 supply chain regulatory push",
     "116 total articles"
   ],
-  "lastRun_prev": "2026-05-17",
+  "lastRun_prev": "2026-05-18",
   "covered_as_of_20260517": [
     "Business jet flights May 2026 strong showing beats last year WINGX Business Air News weekly activity data",
     "Global private jet charter services market $24.12B to $27.38B 2026 CAGR 13.5% 42000 active charter aircraft",
     "MRO market momentum increasing early 2026 Aviation Week $97B market engine 53% share supply chain improvement structural high costs",
     "113 total articles"
   ],
-  "lastRun": "2026-05-15",
   "covered_as_of_20260514": [
     "Air Astana Frankfurt Terminal 3 relocation May 5 2026 daily Astana-Frankfurt flights Europe hub",
     "Business aviation stable investment FBO Signature Aviation Atlantic Aviation Wheels Up $68M fleet modernization Phenom 300 Challenger 300",
@@ -95,7 +94,8 @@
     "Avoid repeating: Embraer Q1 2026 29 deliveries backlog $7.6B tariff margin pressure, Vietjet Qazaqstan Boeing 737 fleet expansion international pilot recruitment, charter market event horizon availability squeeze ACC Aviation 2026 (all covered 2026-05-10)",
     "Avoid repeating: fractional ownership portfolio diversification 2026 NBAA hybrid charter, MD Aircraft MDA1 eViator Aerova 20-aircraft autonomous air logistics AAM, commercial aviation 2026 grows supply lags fleet renewal deficit MRO Aerotime (all covered 2026-05-11)",
     "Avoid repeating: Air Astana Frankfurt Terminal 3 May 2026 daily Astana-Frankfurt, business aviation stable investment FBO Signature Atlantic Wheels Up $68M fleet, EASA electronic technical logs digital signatures MRO (all covered 2026-05-14)",
-    "Avoid repeating: Oliver Wyman MRO AI agents troubleshooting industrial deployment supply chain baseline 2026, global bizjet market 5.46B 2032 CAGR 4.3%, Central Asia airspace 1500 daily flights Eurasian corridor Kazakhstan (all covered 2026-05-15)"
+    "Avoid repeating: Oliver Wyman MRO AI agents troubleshooting industrial deployment supply chain baseline 2026, global bizjet market 5.46B 2032 CAGR 4.3%, Central Asia airspace 1500 daily flights Eurasian corridor Kazakhstan (all covered 2026-05-15)",
+    "Avoid repeating: SAF GHG Protocol book and claim корпоративная GHG ESG отчетность белая книга май 2026, Kazakhstan Astana прямые рейсы Токио конец 2026 Нью Йорк 2027 евразийский авиахаб, цифровые платформы бронирования SAF нейтральные чартеры рынок 45 млрд к 2030 трансформация (all covered 2026-05-19)"
   ],
   "covered_as_of_20260409": [
     "Central Asia Aviation Summit Astana April 23 2026",
@@ -186,5 +186,11 @@
     "Global business jet market 3.86B to 5.46B 2032 CAGR 4.3% AI connected aircraft SAF flexible access",
     "Central Asia airspace doubled daily traffic 600-800 to 1200-1500 flights Kazakhstan neutral Eurasian corridor Europe-China",
     "110 total articles"
+  ],
+  "covered_as_of_20260519": [
+    "SAF GHG Protocol book and claim белая книга корпоративный учет эмиссии ESG май 2026",
+    "Kazakhstan Astana прямые рейсы Токио конец 2026 Нью Йорк 2027 евразийский хаб",
+    "цифровые платформы бронирования SAF опции чартерный рынок 45 млрд к 2030 технологии",
+    "119 total articles"
   ]
 }
